@@ -7,9 +7,14 @@ pipeline{
     }
 
     stages{
+        stage('git'){
+            steps{
+               git branch: 'main', url: 'https://github.com/GKSSN/azure-storage.git'
+            }
+        }
         stage('build'){
             steps{
-                echo 'Hello world';
+                sh "mvn clean install"
             }
         }
     }
